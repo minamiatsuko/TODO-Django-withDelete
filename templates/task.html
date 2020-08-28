@@ -6,35 +6,27 @@
 
 {% block content %}
   <div class="container ">
-      <h2 class="text-center my-3">Youre Tasks</h2>
+      <h2 class="text-center my-3">ToDO List - All Tasks</h2>
       <table class="table table-bordered table-striped text-center">
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Task Title</th>
+            <th scope="col">Task Description</th>
           </tr>
         </thead>
         <tbody>
+        <!-- ここでforループを実行し、すべてのタスクを繰り返します -->
+        
+        {% for task  in tasks  %}
           <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{task.taskTitle}}</td>
+            <td>{{task.taskDesc}}</td>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
+        {% endfor %}
+          
+         
         </tbody>
       </table>
   </div>

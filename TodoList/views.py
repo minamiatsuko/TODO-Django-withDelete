@@ -4,7 +4,7 @@ from TodoList.models import Task
 
 # Create your views here.
 def home(request):
-    context = {'success' : False }
+    context = {'success' : False, 'name': 'Nan'}
     if request.method == "POST":
          #Handle the form
         title = request.POST['title']
@@ -17,4 +17,9 @@ def home(request):
     return render(request, 'index.html', context)
 
 def task(request):
-    return render(request, 'task.html')
+    allTasks = Task.objects.all()
+    # print(allTasks)
+    # for item in allTasks:
+    #     print(item.taskTitle)
+    context = {'tasks' : allTasks}
+    return render(request, 'task.html', context)
