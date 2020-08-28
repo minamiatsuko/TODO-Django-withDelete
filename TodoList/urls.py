@@ -8,5 +8,6 @@ app_name = 'TodoList'
 urlpatterns = [
     path('', views.home, name='home'),
     path('task', views.task, name='task'),
+    path('delete/<task_id>', views.delete, name="delete"),
 ]
 

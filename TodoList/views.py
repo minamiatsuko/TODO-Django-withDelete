@@ -1,5 +1,6 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,redirect
 from TodoList.models import Task
+
 
 
 # Create your views here.
@@ -23,3 +24,9 @@ def task(request):
     #     print(item.taskTitle)
     context = {'tasks' : allTasks}
     return render(request, 'task.html', context)
+
+def delete(request, task_id):
+    task = Task.objects.get(pk=task_id)
+    task.delete()
+    messages.success(request, ('Item Has Been Deleted from List!'))
+    return redirect('task')
